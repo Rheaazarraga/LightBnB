@@ -9,7 +9,8 @@ const pool = new Pool({
   host: 'localhost',
   database: 'lightbnb'
 });
-/// Users
+
+/// ---- Users ---- ///
 
 /**
  * Get a single user from the database given their email.
@@ -57,6 +58,7 @@ const getUserWithId = function(id) {
     });
 
 };
+
 /* ---- TEST CASE ----
 getUserWithId(2);
 */
@@ -88,7 +90,7 @@ const addUser = function(user) {
 exports.addUser = addUser;
 
 
-/// Reservations
+/// ---- Reservations ---- ///
 
 /**
  * Get all reservations for a single user.
@@ -119,7 +121,7 @@ const getAllReservations = function(guest_id, limit = 10) {
 //getAllReservations(2);
 exports.getAllReservations = getAllReservations;
 
-/// Properties
+/// ---- Properties ---- ///
 
 /**
  * Get all properties.
@@ -145,7 +147,6 @@ const getAllProperties = (options, limit = 10) => {
   if (options.city) {
     queryParams.push(`%${options.city}%`);
     queryString += `AND city LIKE $${queryParams.length} `;
-
   }
 
   if (options.owner_id) {
@@ -183,7 +184,6 @@ const getAllProperties = (options, limit = 10) => {
   return pool.query(queryString, queryParams).then((res) => res.rows);
 };
 
-
 exports.getAllProperties = getAllProperties;
 
 
@@ -198,4 +198,5 @@ const addProperty = function(property) {
   properties[propertyId] = property;
   return Promise.resolve(property);
 };
+
 exports.addProperty = addProperty;
