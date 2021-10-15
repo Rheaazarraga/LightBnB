@@ -60,7 +60,7 @@ const getUserWithId = function (id) {
   
 };
 /* ---- TEST CASE ----
-getUserWithId(2)
+getUserWithId(2);
 */
 exports.getUserWithId = getUserWithId;
 
@@ -70,13 +70,26 @@ exports.getUserWithId = getUserWithId;
  * @param {{name: string, password: string, email: string}} user
  * @return {Promise<{}>} A promise to the user.
  */
-const addUser = function (user) {
-  const userId = Object.keys(users).length + 1;
-  user.id = userId;
-  users[userId] = user;
-  return Promise.resolve(user);
-};
+ const addUser =  function(user) {
+  return pool
+    .query(`
+    INSERT INTO users(name, email, password)
+    VALUES ($1, $2, $3)
+    RETURNING *;`
+    , [user.name, user.email, user.password])
+    .then((result) => {
+      console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+  });
+  
+}
+addUser({name:'Orlin Home', email:'orlinhome@mail.com', password:'password'});
+
 exports.addUser = addUser;
+
 
 /// Reservations
 
