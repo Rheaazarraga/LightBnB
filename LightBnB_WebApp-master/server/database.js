@@ -112,7 +112,7 @@ const getAllReservations = function (guest_id, limit = 10) {
     });
 
 };
-getAllReservations(2);
+//getAllReservations(2);
 exports.getAllReservations = getAllReservations;
 
 /// Properties
