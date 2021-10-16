@@ -52,3 +52,12 @@ const submitProperty = function(data) {
     data,
   });
 }
+
+//This function will send the data object we've built out in our submit route to the back-end, where we can use the session data of the active user to complete the request
+const submitReservation = function(data) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/reservations",
+    data,
+  })
+}
