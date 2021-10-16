@@ -15,17 +15,17 @@ VALUES ('Nikocado Avocado', 'nikocado.avocado@mail.com', '$2a$10$FB/BOAVhpuLvpOR
 --ADD DATA TO PROPERTIES 
 
 INSERT INTO properties
-VALUES(1, 1, 'Downtown', 'description', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg', 1025, 1, 1, 1, 'Canada', 'streetXYZ', 'Vancouver', 'British Columbia', '54321', TRUE);
+VALUES(1, 1, 'Downtown', 'description', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg', 10025, 1, 1, 1, 'Canada', 'streetXYZ', 'Vancouver', 'British Columbia', '54321', TRUE);
 
 INSERT INTO properties
-VALUES(2, 2, 'Bitaland', 'description', 'https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg', 1250, 2, 3, 4, 'Canada', '420 Woodland Drive', 'Nanaimo', 'British Columbia', '420365', TRUE);
+VALUES(2, 2, 'Bitaland', 'description', 'https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg', 12500, 2, 3, 4, 'Canada', '420 Woodland Drive', 'Nanaimo', 'British Columbia', '420365', TRUE);
 
 
 INSERT INTO properties
-VALUES(3, 3, 'StardooVallee', 'description', 'https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://mages.pexels.com/photos/1029599/pexels-photo-1029599.jpeg', 980, 3, 2, 3, 'Canada', '647 Steelecase St', 'Scarborough', 'Ontario', '126578', TRUE);
+VALUES(3, 3, 'StardooVallee', 'description', 'https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://mages.pexels.com/photos/1029599/pexels-photo-1029599.jpeg', 9800, 3, 2, 3, 'Canada', '647 Steelecase St', 'Scarborough', 'Ontario', '126578', TRUE);
 
 INSERT INTO properties
-VALUES(4, 4, 'Hippity Hoppity', 'description', 'https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg', 840, 2, 2, 2, 'Canada', 'Mukkbang Rd', 'Montreal', 'Quebec', '9753', TRUE);
+VALUES(4, 4, 'Hippity Hoppity', 'description', 'https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg', 8400, 2, 2, 2, 'Canada', 'Mukkbang Rd', 'Montreal', 'Quebec', '9753', TRUE);
 
 -- ADD DATA TO RESERVATIONS
 
