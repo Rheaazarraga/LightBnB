@@ -98,8 +98,8 @@ exports.addUser = addUser;
  * @return {Promise<[{}]>} A promise to the reservations.
  */
 const getAllReservations = function(guest_id, limit = 10) {
-  return pool
-    .query(`SELECT properties.*, reservations.*, avg(rating) as average_rating
+  const queryString = `
+    SELECT properties.*, reservations.*, avg(rating) as average_rating
     FROM reservations
     JOIN properties ON reservations.property_id = properties.id
     JOIN property_reviews ON properties.id = property_reviews.property_id
@@ -108,17 +108,12 @@ const getAllReservations = function(guest_id, limit = 10) {
     GROUP BY properties.id, reservations.id
     ORDER BY reservations.start_date ASC
     LIMIT $2;`
-    , [guest_id, limit])
-    .then((result) => {
-      console.log(result.rows);
-      return result.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
+    const params = [guest_id, limit];
+    return pool.query(queryString, params)
+      .then(res => res.rows);
 
 };
-//getAllReservations(2);
+
 exports.getAllReservations = getAllReservations;
 
 const addReservation = function(reservation) {
@@ -133,6 +128,23 @@ const addReservation = function(reservation) {
 };
 
 exports.addReservation = addReservation;
+
+//  Gets upcoming reservations
+const getUpcomingReservations = function(guest_id, limit = 10) {
+
+}
+
+
+//  Updates an existing reservation with new information
+const updateReservation = function(reservationId, newReservationData) {
+
+}
+
+
+//  Deletes an existing reservation
+const deleteReservation = function(reservationId) {
+
+}
 
 
 /// ---- Properties ---- ///
