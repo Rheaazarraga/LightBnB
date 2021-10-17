@@ -30,15 +30,15 @@ module.exports = function(router, database) {
     const userId = req.session.userId;
     if (!userId) {
       res.error("💩");
-      return;      
+      return;
     }
     database.getUpcomingReservations(userId)
-    .then(reservations => res.send({ reservations }))
-    .catch(e => {
-      console.error(e);
-      res.send(e);
-    })
-  })
+      .then(reservations => res.send({ reservations }))
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
 
 
   // ---- POST routes ---- //
