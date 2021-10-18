@@ -18,7 +18,7 @@ $(() => {
   window.propertyListings.clearListings = clearListings;
 
   function addProperties(properties, isReservation = false) {
-    // if it's a reservation, we don't want to clear the listings a second time in the addProperties function call
+    // if it's a reservation, do'nt clear listings
     if (!isReservation) {
       clearListings();
     }
@@ -30,15 +30,20 @@ $(() => {
       const listing = propertyListing.createListing(property, isReservation);
       addListing(listing);
     }
+
     if (isReservation) {
+      /* add datatag in this update view to compare the start and end dates, and also appropriately render that information onto the page for the user to see */
       $('.update-button').on('click', function() {
         const idData = $(this).attr('id').substring(16);
-        console.log(`update ${idData}`);
-      });
-      $('.delete-button').on('click', function() {
-        const idData = $(this).attr('id').substring(16);
-        console.log(`delete ${idData}`);
-      });
+        getIndividualReservation(idData).then(data => {
+          views_manager.show("updateReservation", data);
+          console.log(`update ${idData}`);
+        });
+      })
+        $('.delete-button').on('click', function() {
+          const idData = $(this).attr('id').substring(16);
+          console.log(`delete ${idData}`);
+        });
     }
   }
   window.propertyListings.addProperties = addProperties;
