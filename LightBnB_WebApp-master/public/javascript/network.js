@@ -68,13 +68,30 @@ function getUpcomingReservations() {
   return $.ajax({
     url,
   });
-};
+}
 
-/** database route to get individual registrations to format the data for validation purposes using the id of the registration being rendered
+/** database route to get individual reservations to format the data for validation
+ * purposes using the id of the reservation being rendered
 */
 function getIndividualReservation(reservationId) {
-  let url = `/api/reservations/${reservationId}`
+  let url = `/api/reservations/${reservationId}`;
   return $.ajax({
     url,
-  })
+  });
 }
+
+
+const updateReservation = function(data) {
+  return $.ajax({
+    method: "POST",
+    url: `/api/reservations/${data.reservation_id}`,
+    data,
+  });
+};
+
+const deleteReservation = function(data) {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/reservations/${data.reservation_id}`
+  });
+};

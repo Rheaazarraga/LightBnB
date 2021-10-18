@@ -83,5 +83,21 @@ module.exports = function(router, database) {
     }
   });
 
+  // update an existing reservation
+  router.post('/reservations/:reservationId', (req, res) => {
+    const reservationId = req.params.reservationId;
+    database.updateReservation({...req.body, reservation_id: reservationId})
+      .then(reservation => {
+        res.send(reservation);
+      });
+  });
+
+  // delete a reservation
+  router.delete('/reservations/:reservationId', (req, res) => {
+    const reservationId = req.params.reservationId;
+    database.deleteReservation(reservationId);
+  });
+
+  
   return router;
 };
