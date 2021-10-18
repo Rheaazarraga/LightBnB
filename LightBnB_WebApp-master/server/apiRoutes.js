@@ -39,6 +39,16 @@ module.exports = function(router, database) {
       });
   });
 
+  router.get('/reservations/:reservation_id', (req, res) => {
+    const reservationId = req.params.reservation_id;
+    database.getIndividualReservation(reservationId)
+      .then(reservation => res.send(reservation))
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+
 
   // ---- POST routes ---- //
 
@@ -54,9 +64,9 @@ module.exports = function(router, database) {
       });
   });
 
-  /** post request to send the data object we've built out in our submit 
-   * route to the back-end, where we can use the session data of 
-   * the active user to complete the request 
+  /** post request to send the data object we've built out in our submit
+   * route to the back-end, where we can use the session data of
+   * the active user to complete the request
    **/
 
   router.post('/reservations', (req, res) => {
