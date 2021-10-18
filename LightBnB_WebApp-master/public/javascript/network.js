@@ -3,14 +3,14 @@ function getMyDetails() {
   return $.ajax({
     url: "/users/me",
   });
-};
+}
 
 function logOut() {
   return $.ajax({
     method: "POST",
     url: "/users/logout",
   });
-};
+}
 
 function logIn(data) {
   return $.ajax({
@@ -18,7 +18,7 @@ function logIn(data) {
     url: "/users/login",
     data
   });
-};
+}
 
 function signUp(data) {
   return $.ajax({
@@ -26,7 +26,7 @@ function signUp(data) {
     url: "/users",
     data
   });
-};
+}
 
 function getAllListings(params) {
   let url = "/api/properties";
@@ -36,14 +36,14 @@ function getAllListings(params) {
   return $.ajax({
     url,
   });
-};
+}
 
 function getAllReservations() {
   let url = "/api/reservations";
   return $.ajax({
     url,
   });
-};
+}
 
 const submitProperty = function(data) {
   return $.ajax({
@@ -53,12 +53,19 @@ const submitProperty = function(data) {
   });
 };
 
-/**This function will send the data object we've built out in our submit route 
+/**This function will send the data object we've built out in our submit route
  * to the back-end, where we can use the session data of the active user to complete the request */
 const submitReservation = function(data) {
   return $.ajax({
     method: "POST",
     url: "/api/reservations",
     data,
+  });
+};
+
+function getUpcomingReservations() {
+  let url = "/api/reservations/upcoming";
+  return $.ajax({
+    url,
   });
 };
