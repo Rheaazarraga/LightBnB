@@ -131,7 +131,6 @@ const getFulfilledReservations = function(guest_id, limit = 10) {
 exports.getFulfilledReservations = getFulfilledReservations;
 
 
-
 //  Gets upcoming reservations
 const getUpcomingReservations = function(guest_id, limit = 10) {
   const queryString = `
@@ -144,8 +143,8 @@ const getUpcomingReservations = function(guest_id, limit = 10) {
   GROUP BY properties.id, reservations.id
   ORDER BY reservations.start_date
   LIMIT $2;`;
-  const params = [guest_id, limit];
-  return pool.query(queryString, params)
+  const queryParams = [guest_id, limit];
+  return pool.query(queryString, queryParams)
     .then(res => res.rows);
 
 };
@@ -153,10 +152,27 @@ const getUpcomingReservations = function(guest_id, limit = 10) {
 exports.getUpcomingReservations = getUpcomingReservations;
 
 
+// Gets individual reservations
+const getIndividualReservation = function(reservationID) {
+  const queryString = `
+  SELECT *
+  FROM reservations
+  WHERE reservations.id = $1`;
+  return pool.query(queryString, [reservationID])
+    .then(res => res.rows[0]);
+
+};
+
+exports.getIndividualReservation = getIndividualReservation;
+
+
+
+
+
 //  Updates an existing reservation with new information
 const updateReservation = function(reservationId, newReservationData) {
 
-}
+};
 
 
 //  Deletes an existing reservation
@@ -237,11 +253,6 @@ exports.getAllProperties = getAllProperties;
  * @return {Promise<{}>} A promise to the property.
  */
 const addProperty = function(properties) {
-
-  // const propertyId = Object.keys(properties).length + 1;
-  // property.id = propertyId;
-  // properties[propertyId] = property;
-  // return Promise.resolve(property);
 
   const queryString = `INSERT INTO properties 
   (title,
