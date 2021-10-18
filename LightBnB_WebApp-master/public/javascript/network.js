@@ -69,3 +69,12 @@ function getUpcomingReservations() {
     url,
   });
 };
+
+/** database route to get individual registrations to format the data for validation purposes using the id of the registration being rendered
+*/
+function getIndividualReservation(reservationId) {
+  let url = `/api/reservations/${reservationId}`
+  return $.ajax({
+    url,
+  })
+}
