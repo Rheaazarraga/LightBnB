@@ -1,8 +1,7 @@
 module.exports = function(router, database) {
 
-
   // ---- GET routes ---- //
-  
+
   router.get('/properties', (req, res) => {
     database.getAllProperties(req.query, 20)
       .then(properties => res.send({properties}))
@@ -55,7 +54,11 @@ module.exports = function(router, database) {
       });
   });
 
-  /** post request to send the data object we've built out in our submit route to the back-end, where we can use the session data of the active user to complete the request */
+  /** post request to send the data object we've built out in our submit 
+   * route to the back-end, where we can use the session data of 
+   * the active user to complete the request 
+   **/
+
   router.post('/reservations', (req, res) => {
     const userId = req.session.userId;
     if (userId) {
